@@ -1,0 +1,17 @@
+<ion-header [translucent]="true">
+  <ion-toolbar style="--background: #222529; --color: white">
+    <ion-button slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-button>
+    <ion-title>Portfolio Details</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="ion-text-center">
+    <h3>Maps: {{ id() }}</h3>
+    <p>We'll soon be setting up the Leaflet map here to showcase your websites!</p>
+  </div>
+
+  <div id="map" style="height: 100%; width: 100%; border-radius: 15px; margin-top: 20px;"></div>
+</ion-content>
