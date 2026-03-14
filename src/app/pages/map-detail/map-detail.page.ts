@@ -109,22 +109,13 @@ export class MapDetailPage implements OnInit, AfterViewInit, OnDestroy {
       (container as any)._leaflet_id = null;
     }
 
-    this.map = L.map('map');
+    this.map = L.map('map').setView([25.0, -35.0], 3);
 
     L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
-      attribution: ' OpenStreetMap CARTO',
+      attribution: '© OpenStreetMap © CARTO',
       subdomains: 'abcd',
       maxZoom: 20
     }).addTo(this.map);
-
-    // Ottieni le coordinate dei clienti
-    const clientCoords = this.clients.map(client => client.coords);
-
-    // Calcola i limiti della mappa
-    const bounds = L.latLngBounds(clientCoords);
-
-    // Imposta la vista della mappa sui limiti
-    this.map.fitBounds(bounds, { padding: [20, 20] });
 
     // --- ƎP DEV HEADQUARTERS (ARMENIA) ---
     const armeniaCoords: [number, number] = [4.5339, -75.6811];
