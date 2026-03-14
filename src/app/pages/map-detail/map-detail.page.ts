@@ -1,10 +1,7 @@
 import { Component, OnInit, inject, input, AfterViewInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import {
-  IonContent, IonHeader, IonTitle, IonToolbar,
-  IonButton, IonButtons, IonBackButton
-} from '@ionic/angular/standalone';
+import {IonContent, IonHeader, IonTitle, IonToolbar, IonButton, IonButtons, IonBackButton } from '@ionic/angular/standalone';
 import * as L from 'leaflet';
 
 @Component({
@@ -12,10 +9,7 @@ import * as L from 'leaflet';
   templateUrl: './map-detail.page.html',
   styleUrls: ['./map-detail.page.scss'],
   standalone: true,
-  imports: [
-    IonButtons, IonButton, IonContent, IonHeader,
-    IonTitle, IonToolbar, CommonModule, FormsModule, IonBackButton
-  ]
+  imports: [IonButtons, IonButton, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, IonBackButton]
 })
 export class MapDetailPage implements OnInit, AfterViewInit, OnDestroy {
 
@@ -85,7 +79,7 @@ export class MapDetailPage implements OnInit, AfterViewInit, OnDestroy {
   constructor() { }
 
   ngOnInit() {
-    console.log('Visualizzando mappa portfolio ID:', this.id());
+    console.log('Portfolio ID:', this.id());
   }
 
   ngAfterViewInit() {
@@ -104,7 +98,7 @@ export class MapDetailPage implements OnInit, AfterViewInit, OnDestroy {
     if (this.map) {
       this.map.remove();
       this.map = undefined;
-      console.log('Cleanup ƎP Dev completato.');
+      console.log('Cleanup ƎP Dev complete.');
     }
   }
 
@@ -115,8 +109,6 @@ export class MapDetailPage implements OnInit, AfterViewInit, OnDestroy {
       (container as any)._leaflet_id = null;
     }
 
-    // Centriamo sull'Atlantico per vedere contemporaneamente Colombia e Italia
-    // Zoom 3 permette una vista globale ottimale
     this.map = L.map('map').setView([25.0, -35.0], 3);
 
     L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
@@ -130,7 +122,7 @@ export class MapDetailPage implements OnInit, AfterViewInit, OnDestroy {
     L.circleMarker(armeniaCoords, {
       radius: 14,
       fillColor: "#222529",
-      color: "#FFD700", // Bordo oro per il quartier generale
+      color: "#FFD700",
       weight: 3,
       opacity: 1,
       fillOpacity: 1
@@ -157,7 +149,7 @@ export class MapDetailPage implements OnInit, AfterViewInit, OnDestroy {
             <hr style="border: 0; border-top: 1px solid #eee; margin: 5px 0;">
             <a href="${client.website}" target="_blank" rel="noopener noreferrer"
                style="color: #4A90E2; text-decoration: none; font-weight: bold; font-size: 0.9em;">
-               View Project →
+               View Website →
             </a>
           </div>
         `);
