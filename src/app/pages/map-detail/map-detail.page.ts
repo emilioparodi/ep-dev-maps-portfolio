@@ -90,7 +90,7 @@ export class MapDetailPage implements OnInit, AfterViewInit, OnDestroy {
       if (this.map) {
         this.map.invalidateSize();
       }
-    }, 800); // Increased slightly for smoother Iframe loading
+    }, 500);
   }
 
   ngOnDestroy() {
@@ -109,8 +109,7 @@ export class MapDetailPage implements OnInit, AfterViewInit, OnDestroy {
       (container as any)._leaflet_id = null;
     }
 
-    // Initialize map without a fixed view (we'll use fitBounds)
-    this.map = L.map('map');
+    this.map = L.map('map').setView([25.0, -35.0], 3);
 
     L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
       attribution: '© OpenStreetMap © CARTO',
@@ -118,13 +117,8 @@ export class MapDetailPage implements OnInit, AfterViewInit, OnDestroy {
       maxZoom: 20
     }).addTo(this.map);
 
-    // Collect all points for fitBounds
-    const allPoints: L.LatLngExpression[] = [];
-
     // --- ƎP DEV HEADQUARTERS (ARMENIA) ---
     const armeniaCoords: [number, number] = [4.5339, -75.6811];
-    allPoints.push(armeniaCoords);
-
     L.circleMarker(armeniaCoords, {
       radius: 14,
       fillColor: "#222529",
@@ -147,7 +141,6 @@ export class MapDetailPage implements OnInit, AfterViewInit, OnDestroy {
 
     // --- CUSTOMER MARKERS ---
     this.clients.forEach(client => {
-      allPoints.push(client.coords);
       L.circleMarker(client.coords, {
         radius: 9,
         fillColor: "#4A90E2",
@@ -166,14 +159,5 @@ export class MapDetailPage implements OnInit, AfterViewInit, OnDestroy {
           </div>
         `);
     });
-
-    // --- AUTO-CENTERING LOGIC ---
-    if (allPoints.length > 0) {
-      const bounds = L.latLngBounds(allPoints);
-      this.map.fitBounds(bounds, {
-        padding: [50, 50],
-        maxZoom: 13
-      });
-    }
   }
 }
