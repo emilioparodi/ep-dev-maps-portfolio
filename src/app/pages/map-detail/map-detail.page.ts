@@ -131,6 +131,11 @@ export class MapDetailPage implements OnInit, AfterViewInit, OnDestroy {
         <div style="text-align: center; font-family: sans-serif;">
           <strong style="font-size: 1.1em;">ƎP Dev </strong>Headquarter<br>
           <span>Armenia, Quindío</span>
+          <br/>
+          <a href="https://emilioparodi.dev target="_blank" rel="noopener noreferrer"
+               style="color: #4A90E2; text-decoration: none; font-weight: bold; font-size: 0.9em;">
+               View Website →
+            </a>
         </div>
       `);
 
