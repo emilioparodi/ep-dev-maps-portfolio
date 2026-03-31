@@ -17,6 +17,7 @@ export class MapDetailPage implements OnInit, AfterViewInit, OnDestroy {
   private map: L.Map | undefined;
 
   private clients = [
+    { name: 'Retire now, live rich', website: 'https://www.retirenowliverich.com', coords: [4.545266, -75.662373] as [number, number] },
     { name: 'Harley Rescue', website: 'https://www.harley-rescue.web.app', coords: [4.6161046, -75.635595] as [number, number] },
     { name: 'Marea Rimini Spiagge', website: 'https://www.mareaspiagge.it', coords: [44.048946, 12.602241] as [number, number] },
     { name: 'Altura Realty', website: 'https://www.alturarealty.org', coords: [4.562296, -75.654411] as [number, number] },
